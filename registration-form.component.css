@@ -1,0 +1,8 @@
+form-control.ng-valid[required].ng-touched, .ng-valid.required.ng-touched  {
+    border: 1px solid #42A948; 
+  }
+  
+.form-control.ng-invalid.ng-touched:not(form)  {
+    border: 1px solid #E31612; 
+}
+    

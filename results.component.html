@@ -1,0 +1,68 @@
+<div class="table-responsive1">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+
+        <th width ="5%">Sl No.</th>
+        <th width ="16%">Employee Name</th>
+        <th width ="10%">Employee Id</th>
+        <th width ="7%">Designation</th>
+        <th width ="20%">Comapany Name</th>
+        <th width ="10%">Email id</th>
+        <th width ="22%">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let empData of fetchEmpData;let i = index">
+        <td>{{i + 1}}</td>
+        <td>{{empData.EmpName}}</td>
+        <td>{{empData.EMPID}}</td>
+        <td>{{empData.DESIGNATION}}</td>
+        <td>{{empData.CompanyName}}</td>
+        <td>{{empData.email}}</td>
+        <td><button type="button" class="btn btn-primary" (click)="editEmpData(template,i)"><fa name="edit"></fa>Edit</button>
+          &nbsp;&nbsp;<button type="button" class="btn btn-danger"  (click)="deleteEmpData(i)"><fa name="trash-o"></fa>Delete</button></td>
+      <tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+<ng-template #template>
+ <div class="modal-header">
+   <h4 class="modal-title pull-left"><h1>Registration Form</h1></h4>
+   <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+     <span aria-hidden="true">&times;</span>
+   </button>
+ </div>
+ <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="empname">Employee Name</label>
+            <input type="text" class="form-control" id="empname" placeholder="Name" required [(ngModel)]="employeeName" name="employeeName" required>
+          </div>
+      
+          <div class="form-group">
+            <label for="empId">Employee Id</label>
+            <input type="text" class="form-control" id="empId" placeholder="id" [(ngModel)]="employeeId" name="employeeId" required>
+          </div>
+          <div class="form-group">
+            <label for="empDesign">Designation</label>
+            <input type="text" class="form-control" id="empDesign" placeholder="Designation" [(ngModel)]="employeeEmpDesign" name="employeeEmpDesign" required>
+          </div>
+          <div class="form-group">
+            <label for="compName">Company Name</label>
+            <input type="text" class="form-control" id="compName" placeholder="Company Name" [(ngModel)]="employeeCompName" name="employeeCompName" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Official Email-Id</label>
+            <input type="text" class="form-control" id="email" placeholder="email" [(ngModel)]="employeeEmail" name="employeeEmail" required>
+          </div>
+          <button type="submit" class="btn btn-success" (click)="onClickUpdate()"><fa name="save"></fa>Update</button>
+          <button type="cancel" class="btn btn-danger" (click)="cancelUpdate()"><fa name="eraser"></fa>Cancel</button>
+        </form>
+        
+      
+ </div>
+</ng-template>
